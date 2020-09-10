@@ -3,8 +3,8 @@ require 'test_helper'
 describe Roro::Configurator do
   
   Given { prepare_destination "rails/603" }
-  Given(:options)    { nil }
-  Given(:config)     { Roro::Configurator.new(options) }
+  Given(:options) { nil }
+  Given(:config)  { Roro::Configurator.new(options) }
 
   describe '.confirm_directory_empty when' do 
     describe 'directory empty' do 

@@ -26,7 +26,7 @@ module Roro
     no_commands do
                       
       def startup_commands
-        success_msg = "'\n\n#{'*' * 5 }\n\nYour Rails app is available at http://localhost:3000/'\n\n#{'*' * 5 }"
+        success_msg = "Your Rails app is available at http://localhost:3000/"
         system 'docker-compose build --no-cache'
         system 'docker-compose run app bin/rails db:create'
         system 'docker-compose run app bin/rails db:migrate'

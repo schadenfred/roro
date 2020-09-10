@@ -137,7 +137,7 @@ describe Roro::Configurator do
 
             Then { expected.each { |e| assert_includes config.env.keys, e } }
             And  { assert_equal 'greenfield', config.env[:main_app_name]}
-            And  { assert_equal '2.7', config.env[:ruby_version]}
+            And  { assert_equal '2.7.1', config.env[:ruby_version]}
           end
           
           describe 'story specific variables' do

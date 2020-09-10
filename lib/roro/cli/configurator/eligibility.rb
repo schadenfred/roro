@@ -1,7 +1,7 @@
 require 'open3'
 
 module Roro
-  class Configurator < Thor::Shell::Basic
+  class Configurator # < Thor::Shell::Basic
     
     def confirm_directory_app 
       confirm_dependency({
@@ -68,8 +68,8 @@ module Roro
       choices.each { |k,v| question << "(#{k}) #{v.to_s}" }
       
       prompt = question.join
-      answer = ask(prompt, default: 'y', limited_to: choices.keys)
-      
+      omakase = Thor::Shell::Basic.new
+      answer = omakase.ask(prompt, default: 'y', limited_to: choices.keys)
       if answer.eql?('y')
         
         @artifacts.each do |k,v| 
@@ -78,7 +78,7 @@ module Roro
         end 
       end
     end
-    
+               
     def confirm_dependency(options)
       msg = []
       msg << ""

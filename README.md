@@ -219,3 +219,11 @@ This gem and its associated practices are just one way of using these tools and 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
+## rails is omakase
+https://dhh.dk/2012/rails-is-omakase.html
+
+screening / eligibility / 
+The phrase "omakase", literally "I leave it up to you
+okonomi
+
+

@@ -1,7 +1,10 @@
 require 'roro/cli/base/base'
+require 'roro/cli/configurator'
 require 'roro/cli/configurator/configurator'
-require 'roro/cli/configurator/dependencies'
+require 'roro/cli/configurator/eligibility'
+require 'roro/cli/configurator/receiver'
 require 'roro/cli/configurator/okonomi'
+require 'roro/cli/configurator/omakase'
 require 'roro/cli/generate/config/story'
 require 'roro/cli/generate/config/structure'
 require 'roro/cli/generate/exposed'
@@ -24,6 +27,10 @@ module Roro
     
     def self.source_root
       File.dirname(__FILE__) + '/cli/templates'
-    end    
+    end
+    
+    def self.story_root
+      File.dirname(__FILE__) + '/cli/configurator'
+    end
   end
 end

@@ -1,9 +1,9 @@
 require 'yaml'
 require 'json'
-require 'pathname'
+# require 'pathname'
 
 module Roro
-  class Configurator < Thor::Shell::Basic
+  class Configurator # < Thor::Shell::Basic
   
     def configurator_root 
       File.dirname(__FILE__)
