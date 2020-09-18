@@ -128,16 +128,33 @@ module Roro
         json ? json : ( raise (Roro::Error.new(error_msg))) 
       end
 
-      def story_map(story='stories')
-        array ||= []
-        loc = Roro::CLI.story_root + "/#{story}"
-        validate_story(loc)
-        stories = Dir.glob(loc + "/*.yml") 
-        stories.each do |ss| 
-          name = ss.split('/').last.split('.yml').first
-          array << { name.to_sym => story_map([story, name].join('/'))}
-        end   
-        array
+      def story_map(story='rollon', location=nil)
+        story_map ||= {}
+        location ||= [Roro::CLI.story_root, story].join('/')
+        
+        subdirectories = Dir.entries(location).select do |entry| 
+          File.directory?([location, entry].join('/')) #&& !(%w(. ..)).include?(entry)
+        end
+        subdirectories.reject! { |s| %w(. ..).include?(s) } 
+        array = [ ]
+        unless subdirectories.empty? 
+          subdirectories.each do |subdirectory|
+            array << story_map(subdirectory, [location, subdirectory].join('/')) 
+          end
+          story_map[story] = array
+        end
+        # story_map[story] = story_map(subdirectories, location + )
+        story_map
+        # 'stories')
+      #   array ||= []
+      #   loc = Roro::CLI.story_root + "/#{story}"
+      #   validate_story(loc)
+      #   stories = Dir.glob(loc + "/*.yml") 
+      #   stories.each do |ss| 
+      #     name = ss.split('/').last.split('.yml').first
+      #     array << { name.to_sym => story_map([story, name].join('/'))}
+      #   end   
+      #   array
       end
             
       def default_story(story='rollon', loc=nil)
